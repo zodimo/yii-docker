@@ -1,0 +1,14 @@
+{
+  "name": "zodimo/yii-docker",
+  "type": "project",
+  "require": {
+    "yiisoft/yii": "1.1.20"
+  },
+  "authors": [
+    {
+      "name": "Jaco Labuschagne",
+      "email": "zodimo@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}

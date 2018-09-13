@@ -1,0 +1,13 @@
+version : "3.3"
+services:
+  app:
+    container_name: yii
+    build:
+      context: yii
+    image: app
+    volumes:
+      - ../src:/var/www/html
+      - ./yii/files/etc/apache2/sites-enabled:/etc/apache2/sites-enabled
+#      - ./yii/files/etc/apache2/apache2.conf:/etc/apache2/apache2.conf
+    ports:
+      - "80:80"
