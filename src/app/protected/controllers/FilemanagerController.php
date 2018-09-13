@@ -469,6 +469,7 @@ class FilemanagerController extends Controller {
             flush ();
         }
         unlink ( $filepath );
+        yii::app()->end();
     }
 
     /**
@@ -582,13 +583,13 @@ class FilemanagerController extends Controller {
         $root = $this->getRealPathUploadDir ();
 
         //set zip file name for download
-        $filename = md5 ( 'file' ) . '.zip';
+        $filename = md5 ( time() ) . '.zip';
 
         //check if temp directory exists for the zip file
         $tmp_dir=Yii::app ()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'tmp' ;
         if(!file_exists ( $tmp_dir)){
             if (! mkdir ( $tmp_dir , 0755 ))
-                throw new CHttpException(500,'Could not create temp directory. :'.$tmp_dir);
+                throw new CHttpException(500,'Could not create temp directory.');
         }
 
 
