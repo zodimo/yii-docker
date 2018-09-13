@@ -2,6 +2,7 @@
 
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
+Yii::setPathOfAlias('vendor',dirname(__FILE__).'/../../../vendor');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
@@ -10,7 +11,7 @@ return array(
 	'name'=>'My Web Application',
 
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log','booster'),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -34,22 +35,25 @@ return array(
 	// application components
 	'components'=>array(
 
-		'user'=>array(
-			// enable cookie-based authentication
-			'allowAutoLogin'=>true,
-		),
+        'user'=>array(
+            'class' => 'WebUser',
+            // enable cookie-based authentication
+            'allowAutoLogin'=>true,
+        ),
 
-		// uncomment the following to enable URLs in path-format
-		/*
-		'urlManager'=>array(
-			'urlFormat'=>'path',
-			'rules'=>array(
-				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
-				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-			),
-		),
-		*/
+
+        // uncomment the following to enable URLs in path-format
+
+        'urlManager'=>array(
+            'urlFormat'=>'path',
+            'showScriptName'=>false,
+            'rules'=>array(
+                '<controller:\w+>/<id:\d+>'=>'<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
+                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+            ),
+        ),
+
 
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
@@ -74,12 +78,9 @@ return array(
 				*/
 			),
 		),
-        'awsSdk'=>array(
-            'class'=>'\zodimo\yii\aws\sdk\AwsSdk',
-            'sharedConfig'=>array(
-
-            ),
-        )
+        'booster' => array(
+            'class' => 'vendor.clevertech.yii-booster.src.components.Booster',
+        ),
 
 	),
 
@@ -88,5 +89,10 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
+
+        //idows params
+        'UPLOAD_DIR' => DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'tinyii-uploads' ,
+        'PLUGIN_DIR' => DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'tinymce' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'idowsfilemanager',
+        'PLUGIN_DIR_CK' => DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'ckeditor' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'idowsfilemanager',
 	),
 );

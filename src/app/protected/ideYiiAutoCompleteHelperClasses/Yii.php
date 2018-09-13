@@ -24,7 +24,7 @@ class Yii extends YiiBase
 
 /**
  * Class MyWebApplication
- * @property AwsSdk awsSdk
+ * @property WebUser $user
  */
 
 class MyWebApplication extends CWebApplication{

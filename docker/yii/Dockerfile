@@ -34,3 +34,5 @@ RUN docker-php-ext-install -j$(nproc) zip  \
 
 # PHP ini..
 COPY ./files/usr/local/etc/php/php.ini /usr/local/etc/php/
+
+RUN a2enmod rewrite
