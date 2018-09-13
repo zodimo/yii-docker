@@ -5,7 +5,7 @@ install docker and docker-compose
 run : 
 
 docker-compose -f docker/docker-compose.yml  up -d
-docker container exec yii chmod 777 app/assets/ app/images/tinyii-uploads app/protected/runtime
+docker container exec yii chmod 777 app/assets/ app/images/tinyii-uploads app/protected/runtime app/tmp
 
 browse to :http://127.0.0.1
 then login with admin:admin

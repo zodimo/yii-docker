@@ -585,7 +585,11 @@ class FilemanagerController extends Controller {
         $filename = md5 ( 'file' ) . '.zip';
 
         //check if temp directory exists for the zip file
-        (file_exists ( Yii::app ()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'tmp' )) ?: mkdir ( Yii::app ()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'tmp' , 0755 );
+        $tmp_dir=Yii::app ()->basePath . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'tmp' ;
+        if(!file_exists ( $tmp_dir)){
+            if (! mkdir ( $tmp_dir , 0755 ))
+                throw new CHttpException(500,'Could not create temp directory. :'.$tmp_dir);
+        }
 
 
         //zip file name with path
