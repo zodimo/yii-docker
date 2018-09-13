@@ -8,11 +8,7 @@
  */
 class testerCommand extends CConsoleCommand
 {
-    public function actionAws(){
-//        new \zodimo\yii\aws\sdk\AwsSdk();
-//        echo yii::getPathOfAlias('zodimo');
-            echo CVarDumper::dumpAsString(yii::app()->awsSdk->createS3())."\n";
-
+    public function actionIndex(){
+        echo "Welcome to index.\n";
     }
-
 }

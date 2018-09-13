@@ -74,13 +74,6 @@ return array(
 				*/
 			),
 		),
-        'awsSdk'=>array(
-            'class'=>'\zodimo\yii\aws\sdk\AwsSdk',
-            'sharedConfig'=>array(
-
-            ),
-        )
-
 	),
 
 	// application-level parameters that can be accessed
